@@ -25,6 +25,10 @@ The following command will install version 22.x of Node.js
 ```bash
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
 ```
+Or install LTS version of Node.js
+```bash
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo bash -
+```
 ```bash
 sudo apt-get install -y nodejs
 ```
