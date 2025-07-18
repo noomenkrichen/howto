@@ -228,3 +228,40 @@ certbot --nginx -d yourdomain1.com -d www.yourdomain1.com -d yourdomain2.com -d 
 ```bash
 certbot renew --dry-run
 ```
+
+
+## 7. Configuring Nginx for yourdomain.com and your api as yourdomain.com/server (or /api) [optional step]
+### 7.1 Update Backend Nginx Configuration
+```bash
+nano /etc/nginx/sites-available/yourdomain.com.conf
+```
+```bash
+server {
+    listen 80;
+    server_name yourdomain.com www.yourdomain.com;
+
+    location /server/ {
+        proxy_pass http://localhost:4000/; # Your todo API (running via PM2)
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;                     # optional, Useful for logs, rate limiting, auth
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # optional, Commonly used in proxies/load balancers
+        proxy_set_header X-Forwarded-Proto $scheme;                  # optional, Needed if backend enforces HTTPS-only logic
+        proxy_http_version 1.1;                    # Basic with WebSocket support
+        proxy_set_header Upgrade $http_upgrade;    # Basic with WebSocket support
+        proxy_set_header Connection 'upgrade';     # Basic with WebSocket support
+        proxy_cache_bypass $http_upgrade;          # Basic with WebSocket support
+    }
+
+    location / {
+        root /var/www/react-app-2/dist;
+        try_files $uri /index.html;
+    }
+}
+```
+
+### 7.2 Then reload Nginx:
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
