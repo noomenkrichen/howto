@@ -58,6 +58,10 @@ Now add a new user
 ```bash
 db.createUser({ user: "myUser", pwd: "mySecurePassword", roles: [{ role: "readWrite", db: "mydatabase" }]})
 ```
+To add a new admin
+```bash
+db.createUser({ user: "adminUser", pwd: "mySecurePassword", roles: [{ role: "root", db: "admin" }]})
+```
 or
 ```bash
 db.createUser({
