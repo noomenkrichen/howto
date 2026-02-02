@@ -45,6 +45,50 @@ sudo apt install -y git
 ```
 ##  2. Setting Up the MongoDB Database
 If you want to setup MongoDB on VPS Follow this Guide: [click here](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)
+### 2.1 Adding a User
+First start mongoDB with the following command
+```bash
+mongosh
+```
+Use your database (i.e. kwstn)
+```bash
+use kwstn
+```
+Now add a new user
+```bash
+db.createUser({ user: "myUser", pwd: "mySecurePassword", roles: [{ role: "readWrite", db: "mydatabase" }]})
+```
+or
+```bash
+db.createUser({
+  user: "myUser",
+  pwd: "mySecurePassword",
+  roles: [
+    { role: "readWrite", db: "mydatabase" }, // Grants read & write access
+    { role: "dbAdmin", db: "mydatabase" }   // Grants admin privileges for the database
+  ]
+})
+```
+Verify the user
+```bash
+show users
+```
+Enable authentication (optional)
+
+If authentication is not enabled, edit your MongoDB configuration file /etc/mongod.conf
+```yaml
+security:
+  authorization: enabled
+```
+Then restart MongoDB:
+```bash
+sudo systemctl restart mongod
+```
+Connect with new user
+```bash
+mongosh -u myUser -p mySecurePassword --authenticationDatabase mydatabase
+```
+
 ## 3. Deploying the Express and Node.js Backend
 ### 3.1 Clone Your Backend Repository
 ```bash
