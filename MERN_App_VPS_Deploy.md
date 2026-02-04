@@ -336,13 +336,13 @@ server {
 
     location /server/ {
         proxy_pass http://localhost:4000/; # Your todo API (running via PM2)
-        proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;                     # optional, Useful for logs, rate limiting, auth
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # optional, Commonly used in proxies/load balancers
         proxy_set_header X-Forwarded-Proto $scheme;                  # optional, Needed if backend enforces HTTPS-only logic
         proxy_http_version 1.1;                    # Basic with WebSocket support
         proxy_set_header Upgrade $http_upgrade;    # Basic with WebSocket support
         proxy_set_header Connection 'upgrade';     # Basic with WebSocket support
+        proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;          # Basic with WebSocket support
     }
 
