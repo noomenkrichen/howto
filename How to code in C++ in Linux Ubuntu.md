@@ -41,7 +41,7 @@ int main() {
 ## Step 3: Compile your C++ program 
 Use the g++ compiler in your terminal to compile the source file into an executable program: 
 ```bash
-g++ hello.cpp -o hello_program
+g++ hello.cpp -o hello
 ```
 * g++: Invokes the GNU C++ compiler.
 * hello.cpp: The name of your source code file.
@@ -50,6 +50,30 @@ g++ hello.cpp -o hello_program
 ## Step 4: Run your C++ program 
 Execute your compiled program from the terminal by typing the name of the executable, prefixed with ./: 
 ```bash
-./hello_program
+./hello
 ```
 The output "Hello, World!" will be displayed in your terminal. 
+
+## View Contents (Binary/Hex)
+```bash
+hexdump hello | head
+```
+Shows raw bytes. Or xxd hello on some systems.
+
+## Disassemble (Assembly Code)
+```bash
+objdump -d hello
+```
+or
+```bash
+objdump -s hello
+```
+Displays machine instructions the CPU executes (not original C++ source).
+
+## On Windows (if using MinGW/g++)
+```text
+dir hello.exe
+hello.exe
+objdump -d hello.exe
+```
+The executable is binary machine code—you can't recover exact source, but disassembly shows what it does.
