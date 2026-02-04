@@ -45,7 +45,7 @@ g++ hello.cpp -o hello
 ```
 * g++: Invokes the GNU C++ compiler.
 * hello.cpp: The name of your source code file.
-* -o hello_program: Specifies the name for the output executable file. If omitted, the default executable name will be a.out. 
+* -o hello: Specifies the name for the output executable file. If omitted, the default executable name will be a.out. 
 
 ## Step 4: Run your C++ program 
 Execute your compiled program from the terminal by typing the name of the executable, prefixed with ./: 
