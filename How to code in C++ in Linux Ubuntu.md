@@ -77,3 +77,31 @@ hello.exe
 objdump -d hello.exe
 ```
 The executable is binary machine code—you can't recover exact source, but disassembly shows what it does.
+
+## Using hexedit to edit executable files
+Hexedit is a command-line hexadecimal editor for viewing and modifying binary files like your compiled hello executable.
+
+### Install Hexedit
+On Ubuntu/Debian:
+```bash
+sudo apt update && sudo apt install hexedit
+```
+### Basic Usage
+```bash
+hexedit hello
+```
+Opens your executable in hex/ASCII view (left: hex bytes, right: ASCII).
+
+### Key Commands
+* Navigation: Arrow keys, Page Up/Down, Home/End, < (file start), > (file end).
+* Toggle view: Tab (hex ↔ ASCII).
+* Edit: Type over hex digits or ASCII chars.
+* Search: Ctrl+S (forward), Ctrl+R (backward).
+* Undo: Backspace (last change), Ctrl+U (all changes).
+* Save: F2 or Ctrl+X.
+* Quit: Ctrl+C (no save), Ctrl+X (save & exit).
+* Copy/paste: Ctrl+Space (set mark), Esc+W (copy), Ctrl+Y (paste).
+
+Example: Edit your hello file—change bytes at offset 0x40119E (printf string) from 48 65 6C 6C 6F to 59 6F 21 to see "Yo!" instead. Save and run ./hello.
+
+Caution: Editing executables can corrupt them—backup first (cp hello hello.bak).
