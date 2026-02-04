@@ -1,0 +1,6 @@
+# How to code in C++ in Ubuntu ?
+build-essential is normally installed by default in Ubuntu
+
+However you could install it
+bash
+```
