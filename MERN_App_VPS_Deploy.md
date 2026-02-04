@@ -71,6 +71,24 @@ sudo apt update
 ```bash
 sudo apt install -y git
 ```
+#### 1.4.1 Create a folder and changing its owner
+Basic Syntax: 
+Run sudo chown [new_owner] /path/to/folder to transfer ownership to a specific user. For example: sudo chown ubuntu /home/myfolder changes owner to user "ubuntu".
+
+Recursive Ownership: 
+Add -R flag to apply changes to the folder and all contents
+```
+cd /var/www
+mkdir folder
+sudo chown -R new_owner:new_group /path/to/folder
+```
+
+Use sudo chown -R $USER:$USER /path/to/folder to assign to your current user.
+
+Verify Changes
+Check ownership with ls -l /path/to/folder; the first field after permissions shows owner:group. List users/groups via getent passwd or getent group.
+
+
 ##  2. Setting Up the MongoDB Database
 If you want to setup MongoDB on VPS Follow this Guide: [click here](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)
 ### 2.1 Adding a User
