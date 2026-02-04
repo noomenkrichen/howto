@@ -2,5 +2,7 @@
 build-essential is normally installed by default in Ubuntu
 
 However you could install it
-bash
+bash```
+sudo aapt update
 ```
+
