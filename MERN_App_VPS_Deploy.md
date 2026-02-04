@@ -10,6 +10,34 @@
 ```bash
 ssh root@vps_ip_address
 ```
+#### 1.1.1 Create new user
+```
+sudo adduser new_username
+```
+#### 1.1.2 Add sudo privilege to new user by adding it to the sudo group
+```
+sudo usermod -aG sudo new_username
+```
+##### 1.1.2.1 Verify the user creation
+```
+cat /etc/passwd
+```
+##### 1.1.2.2 Test the new user
+```
+su - new_username
+```
+#### 1.1.3 Create local ssh key
+```
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+or
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+#### 1.1.4 Copy ssh key to vps
+```
+ssh-copy-id -i ~/.ssh/id_rsa.pub user@your_vps_ip
+```
 ### 1.2 Update and Upgrade Your System
 ```bash
 sudo apt update
