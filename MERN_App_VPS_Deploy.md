@@ -77,11 +77,11 @@ Restart the SSH service:
 sudo systemctl restart sshd
 ```
 
-### 1.6 Check who is trying to cionnect to your VPS (optional)
+### 1.6 Check who is trying to connect to your VPS (optional)
 ```bash
 tail -n 10 -f /var/log/auth.log
 ```
-### 1.6 Install Node.js and npm (if not pre-installed)
+### 1.7 Install Node.js and npm (if not pre-installed)
 To get the latest version of Node.js Follow this Guide: [click here](https://nodejs.org/en)
 
 The following command will install version 22.x of Node.js
@@ -96,7 +96,7 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo bash -
 sudo apt-get install -y nodejs
 ```
 
-### 1.7 Install Latest version of Git (if not pre-installed)
+### 1.8 Install Latest version of Git (if not pre-installed)
 You can follow this Guide from Git website: [click here](https://git-scm.com/downloads/linux)
 ```bash
 add-apt-repository ppa:git-core/ppa
@@ -108,9 +108,9 @@ sudo apt update
 sudo apt install -y git
 ```
 
-### 1.8 Create a folder and changing its owner
+### 1.9 Create a folder and changing its owner
 Basic Syntax: 
-#### 1.8.1 Run the following command to transfer ownership to a specific user.
+#### 1.9.1 Run the following command to transfer ownership to a specific user.
 ```bash
 sudo chown [new_owner] /path/to/folder
 ```
@@ -118,17 +118,17 @@ For example: to changes owner to user "ubuntu" run:
 ```bash
 sudo chown ubuntu /home/myfolder
 ```
-#### 1.8.2 For recursive Ownership, add -R flag to apply changes to the folder and all contents:
+#### 1.9.2 For recursive Ownership, add -R flag to apply changes to the folder and all contents:
 ```bash
 cd /var/www
 mkdir folder
 sudo chown -R new_owner:new_group /path/to/folder
 ```
-#### 1.8.3 Use the following command to assign to your current user.
+#### 1.9.3 Use the following command to assign to your current user.
 ```bash
 sudo chown -R $USER:$USER /path/to/folder
 ```
-#### 1.8.4 Verify Changes
+#### 1.9.4 Verify Changes
 Check ownership with 
 ```bash
 ls -l /path/to/folder
