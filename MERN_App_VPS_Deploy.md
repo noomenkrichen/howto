@@ -19,7 +19,6 @@ sudo apt update
 sudo apt upgrade -y
 ```
 
-
 ### 1.3 Create new user
 ```bash
 sudo adduser new_username
@@ -56,6 +55,7 @@ or specify ed25519
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
+
 ### 1.5 Copy ssh key to vps
 ```bash
 ssh-copy-id -i ~/.ssh/id_rsa.pub user@your_vps_ip
@@ -81,12 +81,8 @@ sudo systemctl restart sshd
 ```bash
 tail -n 10 -f /var/log/auth.log
 ```
-
-
-
 ### 1.6 Install Node.js and npm (if not pre-installed)
 To get the latest version of Node.js Follow this Guide: [click here](https://nodejs.org/en)
-
 
 The following command will install version 22.x of Node.js
 ```bash
@@ -99,6 +95,7 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo bash -
 ```bash
 sudo apt-get install -y nodejs
 ```
+
 ### 1.7 Install Latest version of Git (if not pre-installed)
 You can follow this Guide from Git website: [click here](https://git-scm.com/downloads/linux)
 ```bash
@@ -110,23 +107,28 @@ sudo apt update
 ```bash
 sudo apt install -y git
 ```
+
 ### 1.8 Create a folder and changing its owner
 Basic Syntax: 
-Run sudo chown [new_owner] /path/to/folder to transfer ownership to a specific user. For example: sudo chown ubuntu /home/myfolder changes owner to user "ubuntu".
-
-Recursive Ownership: 
-Add -R flag to apply changes to the folder and all contents
+#### 1.8.1 Run the following command to transfer ownership to a specific user.
+```bash
+sudo chown [new_owner] /path/to/folder
+```
+For example: to changes owner to user "ubuntu" run:
+```bash
+sudo chown ubuntu /home/myfolder
+```
+#### 1.8.2 For recursive Ownership, add -R flag to apply changes to the folder and all contents:
 ```bash
 cd /var/www
 mkdir folder
 sudo chown -R new_owner:new_group /path/to/folder
 ```
-#### 1.8.1 
-Use the following command to assign to your current user.
+#### 1.8.3 Use the following command to assign to your current user.
 ```bash
 sudo chown -R $USER:$USER /path/to/folder
 ```
-#### 1.8.2 Verify Changes
+#### 1.8.4 Verify Changes
 Check ownership with 
 ```bash
 ls -l /path/to/folder
