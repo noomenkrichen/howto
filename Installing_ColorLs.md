@@ -1,6 +1,6 @@
 ## ✅ Step-by-step Installation for Ubuntu:
 
-### 1. **Install Ruby**
+### 1. *Install Ruby*
 
 Colorls is a Ruby gem, so you need Ruby installed.
 
