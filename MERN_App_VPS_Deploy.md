@@ -11,33 +11,50 @@
 ssh root@vps_ip_address
 ```
 #### 1.1.1 Create new user
-```
+```bash
 sudo adduser new_username
 ```
 #### 1.1.2 Add sudo privilege to new user by adding it to the sudo group
-```
+```bash
 sudo usermod -aG sudo new_username
 ```
 ##### 1.1.2.1 Verify the user creation
-```
+```bash
 cat /etc/passwd
 ```
 ##### 1.1.2.2 Test the new user
-```
+```bash
 su - new_username
 ```
 #### 1.1.3 Create local ssh key
-```
+```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 or
-```
+```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 #### 1.1.4 Copy ssh key to vps
-```
+```bash
 ssh-copy-id -i ~/.ssh/id_rsa.pub user@your_vps_ip
 ```
+#### 1.1.5 Elevate security acces by disabling password login and root login
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+Find and modify the following line:
+```bash
+PubkeyAuthentication yes
+
+PasswordAuthentication no
+
+PermitRootLogin no
+```
+Restart the SSH service:
+```bash
+sudo systemctl restart sshd
+```
+
 ### 1.2 Update and Upgrade Your System
 ```bash
 sudo apt update
@@ -77,7 +94,7 @@ Run sudo chown [new_owner] /path/to/folder to transfer ownership to a specific u
 
 Recursive Ownership: 
 Add -R flag to apply changes to the folder and all contents
-```
+```bash
 cd /var/www
 mkdir folder
 sudo chown -R new_owner:new_group /path/to/folder
@@ -353,7 +370,7 @@ server {
 }
 ```
 or
-```
+```bash
     location /server/ {
          proxy_pass http://localhost:5000/;
          proxy_http_version 1.1;
