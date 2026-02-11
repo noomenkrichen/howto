@@ -37,7 +37,12 @@ cat /etc/passwd
 su - new_username
 ```
 
-### 1.4 Create local ssh key
+### 1.4 Create local ssh key on the machine you wish to use to connect to the VPS
+You could create a key on every machine or computer you plan to use to connect
+
+It is recommended to use at leasrt two different machine (for backup) in case you loose the key on one machine you will still have the backup machine to login using ssh
+
+Because if you disable the password login and the root login, you may loose access permanently in the vent the ssh key is lost!
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
@@ -64,6 +69,11 @@ PermitRootLogin no
 Restart the SSH service:
 ```bash
 sudo systemctl restart sshd
+```
+
+### 1.6 Check who is trying to cionnect to your VPS (optional)
+```bash
+tail -n 10 -f /var/log/auth.log
 ```
 
 
