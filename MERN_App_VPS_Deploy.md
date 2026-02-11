@@ -10,23 +10,34 @@
 ```bash
 ssh root@vps_ip_address
 ```
-#### 1.1.1 Create new user
+
+### 1.2 Update and Upgrade Your System
+```bash
+sudo apt update
+```
+```bash
+sudo apt upgrade -y
+```
+
+
+### 1.3 Create new user
 ```bash
 sudo adduser new_username
 ```
-#### 1.1.2 Add sudo privilege to new user by adding it to the sudo group
+#### 1.3.1 Add sudo privilege to new user by adding it to the sudo group
 ```bash
 sudo usermod -aG sudo new_username
 ```
-##### 1.1.2.1 Verify the user creation
+#### 1.3.2 Verify the user creation
 ```bash
 cat /etc/passwd
 ```
-##### 1.1.2.2 Test the new user
+#### 1.3.3 Test the new user
 ```bash
 su - new_username
 ```
-#### 1.1.3 Create local ssh key
+
+### 1.4 Create local ssh key
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
@@ -34,11 +45,11 @@ or
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
-#### 1.1.4 Copy ssh key to vps
+### 1.5 Copy ssh key to vps
 ```bash
 ssh-copy-id -i ~/.ssh/id_rsa.pub user@your_vps_ip
 ```
-#### 1.1.5 Elevate security acces by disabling password login and root login
+#### 1.5.1 Elevate security acces by disabling password login and root login
 ```bash
 sudo nano /etc/ssh/sshd_config
 ```
@@ -55,14 +66,9 @@ Restart the SSH service:
 sudo systemctl restart sshd
 ```
 
-### 1.2 Update and Upgrade Your System
-```bash
-sudo apt update
-```
-```bash
-sudo apt upgrade -y
-```
-### 1.3 Install Node.js and npm (if not pre-installed)
+
+
+### 1.6 Install Node.js and npm (if not pre-installed)
 To get the latest version of Node.js Follow this Guide: [click here](https://nodejs.org/en)
 
 
@@ -77,7 +83,7 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo bash -
 ```bash
 sudo apt-get install -y nodejs
 ```
-### 1.4 Install Latest version of Git (if not pre-installed)
+### 1.7 Install Latest version of Git (if not pre-installed)
 You can follow this Guide from Git website: [click here](https://git-scm.com/downloads/linux)
 ```bash
 add-apt-repository ppa:git-core/ppa
@@ -88,7 +94,7 @@ sudo apt update
 ```bash
 sudo apt install -y git
 ```
-#### 1.4.1 Create a folder and changing its owner
+### 1.8 Create a folder and changing its owner
 Basic Syntax: 
 Run sudo chown [new_owner] /path/to/folder to transfer ownership to a specific user. For example: sudo chown ubuntu /home/myfolder changes owner to user "ubuntu".
 
