@@ -47,11 +47,11 @@ Simple way (default is ed25519)
 ```bash
 ssh-keygen -C "your_email@example.com"
 ```
-or specify rsa
+or specify rsa, older algorithm (1977); Security based on factoring large prime numbers; Needs large key sizes to be secure (2048 or 4096 bits)
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
-or specify ed25519
+or specify ed25519, modern algorithm (2011); Based on elliptic curve cryptography; Very strong security with much smaller keys. Today, ED25519 is considered more modern and secure by design.
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
