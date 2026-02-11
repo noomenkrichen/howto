@@ -121,11 +121,17 @@ cd /var/www
 mkdir folder
 sudo chown -R new_owner:new_group /path/to/folder
 ```
-
-Use sudo chown -R $USER:$USER /path/to/folder to assign to your current user.
-
-Verify Changes
-Check ownership with ls -l /path/to/folder; the first field after permissions shows owner:group. List users/groups via getent passwd or getent group.
+#### 1.8.1 
+Use the following command to assign to your current user.
+```bash
+sudo chown -R $USER:$USER /path/to/folder
+```
+#### 1.8.2 Verify Changes
+Check ownership with 
+```bash
+ls -l /path/to/folder
+```
+The first field after permissions shows owner:group. List users/groups via getent passwd or getent group.
 
 
 ##  2. Setting Up the MongoDB Database
