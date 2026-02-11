@@ -43,10 +43,16 @@ You could create a key on every machine or computer you plan to use to connect
 It is recommended to use at leasrt two different machine (for backup) in case you loose the key on one machine you will still have the backup machine to login using ssh
 
 Because if you disable the password login and the root login, you may loose access permanently in the vent the ssh key is lost!
+
+Simple way (default is ed25519)
+```bash
+ssh-keygen -C "your_email@example.com"
+```
+or specify rsa
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
-or
+or specify ed25519
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
