@@ -1,6 +1,6 @@
-### ✅ Step-by-step Installation for Ubuntu:
+## ✅ Step-by-step Installation for Ubuntu:
 
-#### 1. **Install Ruby**
+### 1. **Install Ruby**
 
 Colorls is a Ruby gem, so you need Ruby installed.
 
@@ -17,7 +17,7 @@ ruby -v
 
 ---
 
-#### 2. **Install the required dependencies**
+### 2. **Install the required dependencies**
 
 Colorls uses some native extensions and may require a few development tools:
 
@@ -27,7 +27,7 @@ sudo apt install build-essential
 
 ---
 
-#### 3. **Install the Colorls gem**
+### 3. **Install the Colorls gem**
 
 ```bash
 sudo gem install colorls
@@ -41,7 +41,7 @@ sudo gem install colorls --no-document
 
 ---
 
-#### 4. **Install Nerd Fonts (for icons)**
+### 4. **Install Nerd Fonts (for icons)**
 
 Colorls uses fonts that include special glyphs.
 
@@ -59,7 +59,7 @@ Then set your terminal font to "Hack Nerd Font" or similar in your terminal emul
 
 ---
 
-#### 5. **Enable and Test Colorls**
+### 5. Enable and Test Colorls
 
 Now run:
 
@@ -75,7 +75,7 @@ colorls -lA
 
 ---
 
-#### 6. **(Optional) Create alias for convenience**
+### 6. (Optional) Create alias for convenience
 
 Add this to your `~/.bashrc` or `~/.zshrc`:
 
