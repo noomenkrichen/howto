@@ -14,6 +14,7 @@ git push origin master
 
 echo "Successful GitHub operations!"
 ```
+* The -e flag enables interpretation of escape characters like \n.
 
 ## 🔧 Customizing the date format
 
