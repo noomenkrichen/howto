@@ -1,4 +1,63 @@
-# Adding Users in MongoDB Locally
+# Adding MongoDB Users from mongosh Command Line
+To add a user to MongoDB, follow these steps:
+## 1. Connect to MongoDB
+First, access your MongoDB shell:
+```sh
+mongosh
+```
+If you are using an older version:
+```sh
+mongo
+```
+
+## 2. Switch to the Database
+Users are created within a specific database. If you want to create a user for admin access, switch to the admin database:
+```sh
+use admin
+```
+Or, if you want to add a user to a specific database (e.g., mydatabase):
+```sh
+use mydatabase
+```
+
+## 3. Create a User
+Run the following command to create a user:
+```sh
+db.createUser({
+  user: "myUser",
+  pwd: "mySecurePassword",
+  roles: [
+    { role: "readWrite", db: "mydatabase" }, // Modify role as needed
+    { role: "dbAdmin", db: "mydatabase" }   // Optional additional role
+  ]
+})
+```
+
+## 4. Verify the User
+To check if the user was created successfully:
+```sh
+show users
+```
+
+## 5. Enable Authentication (Optional)
+If authentication is not enabled, edit your MongoDB configuration file (/etc/mongod.conf or /usr/local/etc/mongod.conf on macOS):
+```yaml
+security:
+  authorization: enabled
+```
+Then restart MongoDB:
+```bash
+sudo systemctl restart mongod
+```
+
+## 6. Connect with the New User
+To connect using the new user:
+```bash
+mongosh -u myUser -p mySecurePassword --authenticationDatabase mydatabase
+```
+
+# Adding MongoDB Users Directly from the Terminal
+You can create a MongoDB user directly from the terminal by running the mongosh command with an inline script. Here's how:
 ## 1. Connect to MongoDB
 ```bash
 mongosh --eval 'db.adminCommand({listDatabases: 1})'
