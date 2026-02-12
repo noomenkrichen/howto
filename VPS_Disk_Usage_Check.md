@@ -1,4 +1,36 @@
 # VPS Disk Usage Check
+## Overall Disk Usage
+```bash
+df -h
+```
+* df: Displays disk space usage
+* -h: Human-readable format (GB, MB, etc.)
+## Check Usage of a Specific Directory
+```bash
+du -sh /path/to/directory
+```
+* du: Displays disk usage of files and directories
+* -s: Summarizes total size
+* -h: Human-readable format
+## List Disk Usage of All Directories
+```bash
+du -h --max-depth=1 /
+```
+* Shows the size of all directories under / (root)
+## Find Large Files
+```bash
+find / -type f -size +1G
+```
+* Finds files larger than 1GB
+## Graphical Representation (ncdu)
+If you want a more interactive way:
+```bash
+sudo apt update && sudo apt install ncdu -y
+ncdu /
+```
+* This provides a navigable interface to analyze disk usage.
+
+
 ## 1. Build Files Accumulating
 Since you're running a MERN stack with a frontend build process (vite build), every build generates files in /var/www/kwstn/frontend/dist.
 ### 🔍 Check:
