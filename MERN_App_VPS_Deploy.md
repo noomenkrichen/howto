@@ -79,7 +79,10 @@ sudo systemctl restart sshd
 
 ### 1.6 Check who is trying to connect to your VPS (optional)
 ```bash
-tail -n 10 -f /var/log/auth.log
+sudo tail -n 10 -f /var/log/auth.log
+sudo fail2ban-client stsatus sshd
+sudo grep ".env" /var/log/nginx/access.log
+sudo grep ".git" /var/log/nginx/access.log
 ```
 ### 1.7 Install Node.js and npm (if not pre-installed)
 To get the latest version of Node.js Follow this Guide: [click here](https://nodejs.org/en)
