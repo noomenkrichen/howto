@@ -80,7 +80,7 @@ sudo systemctl restart sshd
 ### 1.6 Check who is trying to connect to your VPS (optional)
 ```bash
 sudo tail -n 10 -f /var/log/auth.log
-sudo fail2ban-client stsatus sshd
+sudo fail2ban-client status sshd
 sudo grep ".env" /var/log/nginx/access.log
 sudo grep ".git" /var/log/nginx/access.log
 ```
