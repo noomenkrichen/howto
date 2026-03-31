@@ -87,9 +87,9 @@ sudo grep ".git" /var/log/nginx/access.log
 ### 1.7 Install Node.js and npm (if not pre-installed)
 To get the latest version of Node.js Follow this Guide: [click here](https://nodejs.org/en)
 
-The following command will install version 22.x of Node.js
+The following command will install version 24.x of Node.js
 ```bash
-curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
+curl -fsSL https://deb.nodesource.com/setup_24.x | sudo bash -
 ```
 Or install LTS version of Node.js
 ```bash
