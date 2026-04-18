@@ -13,7 +13,7 @@ chsh -s $(which zsh)
 ```bash
 echo $SHELL
 ```
-## to revert bacjk to BASH at any time use the following command:
+## to revert back to BASH at any time use the following command:
 ```bash
 chsh -s $(which bash)
 ```
