@@ -86,6 +86,58 @@ sudo fail2ban-client status sshd
 sudo grep ".env" /var/log/nginx/access.log
 sudo grep ".git" /var/log/nginx/access.log
 ```
+
+### Fail2Ban
+#### 1. Install Fail2Ban
+```bash
+sudo apt update
+sudo apt install fail2ban -y
+```
+#### 2. Start + Enable It
+```bash
+sudo systemctl start fail2ban
+sudo systemctl enable fail2ban
+```
+Check it:
+```bash
+sudo systemctl status fail2ban
+```
+#### 3. Create Your Config File (Do NOT edit default)
+```bash
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+```
+#### 4. Secure SSH (the important part)
+```bash
+sudo nano /etc/fail2ban/jail.local
+```
+Find the [sshd] section and set:
+```yaml
+[sshd]
+enabled = true
+port = ssh
+logpath = %(sshd_log)s
+backend = systemd
+maxretry = 5
+bantime = 1h
+findtime = 10m
+```
+#### 5. Restart Fail2Ban
+```bash
+sudo systemctl restart fail2ban
+```
+#### 6. Verify It’s Working
+```bash
+sudo fail2ban-client status
+```
+You should see:
+```bash
+Jail list: sshd
+```
+Then:
+```bash
+sudo fail2ban-client status sshd
+```
+
 ### 1.7 Install Node.js and npm (if not pre-installed)
 To get the latest version of Node.js Follow this Guide: [click here](https://nodejs.org/en)
 
