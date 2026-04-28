@@ -66,11 +66,13 @@ sudo nano /etc/ssh/sshd_config
 ```
 Find and modify the following line:
 ```bash
+PermitRootLogin no
+
 PubkeyAuthentication yes
+AllowUsers user1 user2
 
 PasswordAuthentication no
-
-PermitRootLogin no
+PermitEmptyPasswords no
 ```
 Restart the SSH service:
 ```bash
