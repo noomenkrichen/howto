@@ -298,7 +298,7 @@ sudo ufw allow 'Nginx Full'
 ```
 ### 4.6 Configure Nginx for React Frontends
 ```bash
-nano /etc/nginx/sites-available/yourdomain1.com.conf
+sudo nano /etc/nginx/sites-available/yourdomain1.com.conf
 ```
 ```bash
 server {
@@ -324,7 +324,7 @@ server {
 Save and exit (Ctrl + X, then Y and Enter).
 ### 4.6 Create a similar file for the second or multiple React app.
 ```bash
-nano /etc/nginx/sites-available/yourdomain2.com.conf
+sudo nano /etc/nginx/sites-available/yourdomain2.com.conf
 ```
 ```bash
 server {
@@ -339,22 +339,22 @@ server {
 ```
 ### 4.7 Create symbolic links to enable the sites.
 ```bash
-ln -s /etc/nginx/sites-available/yourdomain1.com.conf /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/yourdomain1.com.conf /etc/nginx/sites-enabled/
 ```
 ```bash
-ln -s /etc/nginx/sites-available/yourdomain2.com.conf /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/yourdomain2.com.conf /etc/nginx/sites-enabled/
 ```
 ### 4.8 Test the Nginx configuration for syntax errors.
 ```bash
-nginx -t
+sudo nginx -t
 ```
 ```bash
-systemctl restart nginx
+sudo systemctl restart nginx
 ```
 ## 5. Configuring Nginx as a Reverse Proxy for the backend
 ### 5.1 Update Backend Nginx Configuration
 ```bash
-nano /etc/nginx/sites-available/api.yourdomain.com.conf
+sudo nano /etc/nginx/sites-available/api.yourdomain.com.conf
 ```
 ```bash
 server {
@@ -372,11 +372,11 @@ server {
 ```
 ### 5.2 Create symbolic links to enable the sites.
 ```bash
-ln -s /etc/nginx/sites-available/api.yourdomain.com.conf /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/api.yourdomain.com.conf /etc/nginx/sites-enabled/
 ```
 ### 5.3 Restart nginx
 ```bash
-systemctl restart nginx
+sudo systemctl restart nginx
 ```
 ### 5.4 Connect Domain Name with Website
 Point all your domain & sub-domain on VPS IP address by adding DNS records in your domain manager 
@@ -390,18 +390,18 @@ sudo apt install -y certbot python3-certbot-nginx
 ```
 ### 6.2 Obtain SSL Certificates
 ```bash
-certbot --nginx -d yourdomain1.com -d www.yourdomain1.com -d yourdomain2.com -d api.yourdomain.com
+sudo certbot --nginx -d yourdomain1.com -d www.yourdomain1.com -d yourdomain2.com -d api.yourdomain.com
 ```
 ### 6.3 Verify Auto-Renewal
 ```bash
-certbot renew --dry-run
+sudo certbot renew --dry-run
 ```
 
 
 ## 7. Configuring Nginx for yourdomain.com and your api as yourdomain.com/server (or /api) [optional step]
 ### 7.1 Update Backend Nginx Configuration
 ```bash
-nano /etc/nginx/sites-available/yourdomain.com.conf
+sudo nano /etc/nginx/sites-available/yourdomain.com.conf
 ```
 ```bash
 server {
