@@ -370,11 +370,12 @@ server {
     location ~ /\.env {
         deny all;
         return 403;
-   }
-   # Prevent hidden files access (better)
-   location ~ /\.(?!well-known).* {
+    }
+
+    # Prevent hidden files access (better)
+    location ~ /\.(?!well-known).* {
         deny all;
-   }
+    }
 }
 ```
 Save and exit (Ctrl + X, then Y and Enter).
