@@ -66,7 +66,11 @@ sudo nano /etc/ssh/sshd_config
 ```
 Find and modify the following line:
 ```bash
+LoginGraceTime 30s
 PermitRootLogin no
+StrictModes yes
+MaxAuthTries 3
+MaxSessions 2
 
 PubkeyAuthentication yes
 AllowUsers user1 user2
