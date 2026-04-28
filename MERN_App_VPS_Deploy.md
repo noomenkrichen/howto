@@ -277,7 +277,19 @@ Repeat for the second or mulitiple React app.
 ```bash
 sudo apt install -y nginx
 ```
-adding Nginx in firewall
+### Hides the Nginx version number from error pages and headers
+Makes fingerprinting your server slightly harder
+
+Edit the nginx.conf file:
+```bash
+sudo nano /etc/nginx/nginx.conf
+```
+Uncomment the following
+```yaml
+# server_tokens off;
+```
+
+### Adding Nginx in firewall
 ```bash
 sudo ufw status
 ```
@@ -297,6 +309,16 @@ server {
         root /var/www/your-repo/frontend/dist;
         try_files $uri /index.html;
     }
+
+    # Block access to .env
+    location ~ /\.env {
+        deny all;
+        return 403;
+   }
+   # Prevent hidden files access (better)
+   location ~ /\.(?!well-known).* {
+        deny all;
+   }
 }
 ```
 Save and exit (Ctrl + X, then Y and Enter).
@@ -386,8 +408,8 @@ server {
     listen 80;
     server_name yourdomain.com www.yourdomain.com;
 
-    location /server/ {
-        proxy_pass http://localhost:4000/; # Your todo API (running via PM2)
+    location /api/ {
+        proxy_pass http://localhost:4000/api/; # Your todo API (running via PM2)
         proxy_set_header X-Real-IP $remote_addr;                     # optional, Useful for logs, rate limiting, auth
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # optional, Commonly used in proxies/load balancers
         proxy_set_header X-Forwarded-Proto $scheme;                  # optional, Needed if backend enforces HTTPS-only logic
