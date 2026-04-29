@@ -124,6 +124,28 @@ backend = systemd
 maxretry = 5
 bantime = 1h
 findtime = 10m
+
+[nginx-http-auth]
+enabled = true
+mode = aggressive
+port = http,https
+logpath = %(nginx_error_log)s
+maxretry = 3
+bantime = 3600
+
+[nginx-botsearch]
+enabled = true
+port = http,https
+logpath = %(nginx_error_log)s
+maxretry = 2
+bantime = 86400
+
+[nginx-bad-request]
+enabled = true
+port = http,https
+logpath = %(nginx_access_log)s
+maxretry = 3
+bantime = 3600
 ```
 #### 5. Restart Fail2Ban
 ```bash
