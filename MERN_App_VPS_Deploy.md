@@ -121,7 +121,7 @@ enabled = true
 port = ssh
 logpath = %(sshd_log)s
 backend = systemd
-maxretry = 5
+maxretry = 3
 bantime = 1h
 findtime = 10m
 
